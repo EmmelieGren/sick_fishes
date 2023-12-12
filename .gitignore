@@ -18129,3 +18129,5 @@ venv/Scripts/toco.exe
 venv/Scripts/wheel.exe
 runs
 config.yaml
+splitted_and_augmented_data
+__pycache__
