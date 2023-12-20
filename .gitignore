@@ -18132,3 +18132,6 @@ config.yaml
 splitted_and_augmented_data
 __pycache__
 sick_fishes.v1i.yolov8
+sick_fishes2.0.v1i.yolov8
+yolov8n.pt
+yolov8s.pt
