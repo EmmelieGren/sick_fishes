@@ -9,6 +9,39 @@ def rotate_image(image, angle):
     rotated_image = cv2.warpAffine(image, rotation_matrix, (width, height))
     return rotated_image
 
+def rotate_and_resize(image, angle):
+    # Hämta bildens dimensioner
+    height, width = image.shape[:2]
+
+    # fill_color=(random.randint(1,255), random.randint(1,255), random.randint(1,255))
+    fill_color = (128, 128, 128)
+
+    # Skapa rotationsmatris och applicera rotation
+    rotation_matrix = cv2.getRotationMatrix2D((width / 2, height / 2), angle, 1)
+    rotated_image = cv2.warpAffine(image, rotation_matrix, (width, height), borderMode=cv2.BORDER_CONSTANT, borderValue=fill_color)
+
+    # Hitta gränserna för den roterade bilden
+    cos_theta = abs(rotation_matrix[0, 0])
+    sin_theta = abs(rotation_matrix[0, 1])
+
+    new_width = int((width * cos_theta) + (height * sin_theta))
+    new_height = int((width * sin_theta) + (height * cos_theta))
+
+    # Justera rotationsmatrisen för att centrera området med roterat innehåll
+    translation_x = (new_width - width) / 2
+    translation_y = (new_height - height) / 2
+    rotation_matrix[0, 2] += translation_x
+    rotation_matrix[1, 2] += translation_y
+
+    rotated_resized_image = cv2.warpAffine(image, rotation_matrix, (new_width, new_height), borderMode=cv2.BORDER_CONSTANT, borderValue=fill_color)
+
+    return rotated_resized_image
+
+def flip_image(image):
+    # Horisontellt invertera bilden
+    flipped_image = cv2.flip(image, 1)
+    return flipped_image
+
 def crop_image(image):
     """Crop the image to 1/4 of the original size."""
     original_height, original_width = image.shape[:2]
