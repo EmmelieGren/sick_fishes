@@ -5,6 +5,8 @@ ApplicationWindow {
     width: 400
     height: 600
     title: "Sick_Fishes"
+    flags: Qt.FramelessWindowHint
+    
     property string currTime: "00:00:00"
     property QtObject backend
     Rectangle {
@@ -12,7 +14,7 @@ ApplicationWindow {
         Image {
             sourceSize.width: parent.width
             sourceSize.height: parent.height
-            source: "./images/grey.png"
+            source: "./images/fish2.png"
             fillMode: Image.PreserveAspectCrop
         }
         Connections {
@@ -40,15 +42,24 @@ ApplicationWindow {
         Item {
         width: 640
         height: 480
-
-        
-
         Button {
             text: "Import PNG"
             anchors.bottom: parent.bottom
             anchors.bottomMargin: 10
             anchors.horizontalCenter: parent.horizontalCenter
             onClicked: backend.importPNG()
+        }
+    }
+    Item {
+        width: 640
+        height: 480
+        Button {
+            text: "Exit"
+            anchors.bottom: parent.bottom
+            anchors.bottomMargin: 10
+            anchors.left: parent.left
+            anchors.leftMargin: 30
+            onClicked: Qt.quit()
         }
     }
 
