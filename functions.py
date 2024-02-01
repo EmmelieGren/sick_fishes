@@ -13,8 +13,8 @@ def rotate_and_resize(image, angle):
     # Hämta bildens dimensioner
     height, width = image.shape[:2]
 
-    # fill_color=(random.randint(1,255), random.randint(1,255), random.randint(1,255))
-    fill_color = (128, 128, 128)
+    fill_color=(random.randint(1,255), random.randint(1,255), random.randint(1,255))
+    # fill_color = (128, 128, 128)
 
     # Skapa rotationsmatris och applicera rotation
     rotation_matrix = cv2.getRotationMatrix2D((width / 2, height / 2), angle, 1)
