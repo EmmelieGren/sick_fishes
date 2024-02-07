@@ -8,8 +8,8 @@ from PyQt6.QtQuick import QQuickWindow
 from PyQt6.QtCore import QObject, pyqtSignal, pyqtSlot
 from PyQt6.QtWidgets import QApplication, QFileDialog
 
-from tensorflow.keras.preprocessing.image import img_to_array, load_img
-from tensorflow.keras.models import load_model
+#from tensorflow.keras.preprocessing.image import img_to_array, load_img
+#from tensorflow.keras.models import load_model
 
 print("Imports Complete")
 
@@ -18,7 +18,7 @@ class Backend(QObject):
 
     def __init__(self):
         QObject.__init__(self)
-        self.cnn_model =  load_model("..\saved_models\cnn_model_more_data_17-1-24.h5")
+        #self.cnn_model =  load_model("..\saved_models\cnn_model_more_data_17-1-24.h5")
         
     updated = pyqtSignal(str, arguments=['updater'])
 
@@ -64,10 +64,11 @@ class Backend(QObject):
     def prepare_images(file_paths, target_size=(64, 64)):
         images = []
         for path in file_paths:
-            img = load_img(path, target_size=target_size)
-            img_array = img_to_array(img)
-            images.append(img_array)
-        return np.array(images)
+            #img = load_img(path, target_size=target_size)
+            #img_array = img_to_array(img)
+            #images.append(img_array)
+            tent = tent
+        #return np.array(images)
     
 
 QQuickWindow.setSceneGraphBackend('software')

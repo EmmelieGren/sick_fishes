@@ -1,5 +1,7 @@
 import QtQuick
 import QtQuick.Controls.Basic
+import QtQuick.Controls
+
 ApplicationWindow {
     visible: true
     width: 400
@@ -39,28 +41,50 @@ ApplicationWindow {
             }
         }
     }
+
         Item {
         width: 640
         height: 480
         Button {
-            text: "Import PNG"
+            id: exitButton
+            text: "Exit"
+            background: Rectangle {
+                implicitWidth: 100
+                implicitHeight: 40
+                border.color: "#26282a"
+                border.width: 1
+                radius: 8
+                color: exitButton.down ? "#d6d6d6" : "#f6f6f6"
+            }            
             anchors.bottom: parent.bottom
             anchors.bottomMargin: 10
-            anchors.horizontalCenter: parent.horizontalCenter
-            onClicked: backend.importPNG()
+            anchors.left: parent.left
+            anchors.leftMargin: 230
+
+            onClicked: Qt.quit()
         }
     }
     Item {
         width: 640
         height: 480
         Button {
-            text: "Exit"
+            id: importButton
+            text: "Import image"
+            background: Rectangle {
+                implicitWidth: 100
+                implicitHeight: 40
+                border.color: "#26282a"
+                border.width: 1
+                radius: 8
+                color: importButton.down ? "#d6d6d6" : "#f6f6f6"
+            }
             anchors.bottom: parent.bottom
             anchors.bottomMargin: 10
             anchors.left: parent.left
-            anchors.leftMargin: 30
-            onClicked: Qt.quit()
+            anchors.leftMargin: 70
+            
+            onClicked: backend.importPNG()
         }
     }
-
+    
 }
